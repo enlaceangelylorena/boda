@@ -16,7 +16,7 @@ window.BODA_CONFIG = {
   },
 
   details: {
-    dressCode: 'Sobre minimo 4.500 € + IVA "comision... comision...',
+    dressCode: 'Se irá actualizando con mas información',
     giftInfo: 'Tu presencia será nuestro mejor regalo.'
   },
 
