@@ -30,7 +30,7 @@ window.BODA_CONFIG = {
 
   cloudinary: {
     enabled: false,
-    cloudName: 'TU_CLOUD_NAME',
+    cloudName: 'gvw5lffp',
     unsignedUploadPreset: 'TU_UPLOAD_PRESET_UNSIGNED',
     folder: 'boda/invitados',
     tag: 'boda-angel-lorena',
