@@ -26,7 +26,7 @@ window.BODA_CONFIG = {
     giftInfo: 'Tu presencia será nuestro mejor regalo.'
   },
 
-  googleSheetWebAppUrl: 'PEGA_AQUI_TU_URL_DE_GOOGLE_APPS_SCRIPT',
+  googleSheetWebAppUrl: 'https://script.google.com/macros/s/AKfycby-8cLr6vHtbamZ8HrTloFcpEuvwysie47QPyrHCslN2WqiAJNoFUxP395L8Qc7cpxHGg/exec',
 
   cloudinary: {
     enabled: false,
