@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ángel & Lorena | Nuestra boda</title>
+  <meta name="description" content="Web de boda de Ángel y Lorena: evento, galería, subida de fotos y confirmación de asistencia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <nav class="navbar">
+      <a href="#inicio" class="brand">Ángel <span>&</span> Lorena</a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#evento">Evento</a>
+        <a href="#galeria">Galería</a>
+        <a href="#subir-foto">Subir Foto</a>
+        <a href="#confirmar">Confirmar</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="watercolor watercolor-one"></div>
+      <div class="watercolor watercolor-two"></div>
+      <p class="eyebrow">Nos casamos</p>
+      <h1>Ángel <span>&</span> Lorena</h1>
+      <p class="date" id="weddingDateText">Sábado, 20 de septiembre de 2026</p>
+      <div class="countdown" id="countdown" aria-label="Cuenta atrás de la boda">
+        <div><strong id="days">00</strong><span>Días</span></div>
+        <div><strong id="hours">00</strong><span>Horas</span></div>
+        <div><strong id="minutes">00</strong><span>Min</span></div>
+        <div><strong id="seconds">00</strong><span>Seg</span></div>
+      </div>
+      <a href="#confirmar" class="btn primary">Confirmar asistencia</a>
+    </section>
+  </header>
+
+  <main>
+    <section class="section intro">
+      <p class="script">Con mucha ilusión</p>
+      <h2>Queremos compartir este día contigo</h2>
+      <p>
+        Hemos creado esta web para que puedas consultar la información del evento, confirmar tu asistencia,
+        subir fotos del gran día y disfrutar de los recuerdos en nuestra galería.
+      </p>
+    </section>
+
+    <section class="section event-section" id="evento">
+      <div class="section-heading">
+        <p class="eyebrow">Información del evento</p>
+        <h2>El gran día</h2>
+      </div>
+      <div class="event-grid">
+        <article class="event-card">
+          <span class="icon">💍</span>
+          <h3>Ceremonia</h3>
+          <p id="ceremonyTime">18:30 h</p>
+          <p id="ceremonyPlace">Iglesia / lugar de la ceremonia</p>
+          <a id="ceremonyMap" href="#" target="_blank" rel="noreferrer" class="text-link">Ver ubicación</a>
+        </article>
+        <article class="event-card">
+          <span class="icon">🥂</span>
+          <h3>Celebración</h3>
+          <p id="partyTime">21:00 h</p>
+          <p id="partyPlace">Finca / salón de celebración</p>
+          <a id="partyMap" href="#" target="_blank" rel="noreferrer" class="text-link">Ver ubicación</a>
+        </article>
+        <article class="event-card">
+          <span class="icon">🎁</span>
+          <h3>Detalles</h3>
+          <p id="dressCode">Código de vestimenta: elegante</p>
+          <p id="giftInfo">Tu presencia será nuestro mejor regalo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="section-heading">
+        <p class="eyebrow">Recuerdos en directo</p>
+        <h2>Galería</h2>
+        <p>
+          Las fotos se reproducen automáticamente en bucle. Puedes ampliarlas y descargarlas.
+        </p>
+      </div>
+
+      <div class="carousel-shell">
+        <button class="carousel-btn prev" id="prevPhoto" aria-label="Foto anterior">‹</button>
+        <div class="carousel-stage" id="carouselStage">
+          <img id="carouselImage" src="" alt="Foto de la boda" />
+          <div class="carousel-empty" id="carouselEmpty">
+            <p>Aún no hay fotos cargadas.</p>
+            <small>Configura Cloudinary o añade imágenes en <code>assets/fotos</code>.</small>
+          </div>
+        </div>
+        <button class="carousel-btn next" id="nextPhoto" aria-label="Foto siguiente">›</button>
+      </div>
+      <div class="gallery-actions">
+        <button class="btn secondary" id="expandPhoto">Ampliar foto</button>
+        <a class="btn ghost" id="downloadPhoto" href="#" download>Descargar</a>
+        <button class="btn ghost" id="refreshGallery">Actualizar galería</button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="section upload-section" id="subir-foto">
+      <div class="upload-card">
+        <div>
+          <p class="eyebrow">Comparte tus recuerdos</p>
+          <h2>Subir Foto</h2>
+          <p>
+            Los invitados pueden escanear el QR o pulsar el botón para subir sus fotos. Si configuras Cloudinary
+            con subida sin firma, aparecerán automáticamente en la galería.
+          </p>
+          <div class="upload-actions">
+            <label class="btn primary upload-label">
+              Subir foto ahora
+              <input type="file" id="photoInput" accept="image/*" hidden />
+            </label>
+            <p class="status" id="uploadStatus"></p>
+          </div>
+        </div>
+        <div class="qr-box">
+          <canvas id="qrCanvas" width="220" height="220" aria-label="Código QR para subir fotos"></canvas>
+          <small>QR a esta sección</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section confirm-section" id="confirmar">
+      <div class="section-heading">
+        <p class="eyebrow">Confirmación</p>
+        <h2>Confirma tu asistencia</h2>
+        <p>Rellena el formulario y se guardará directamente en Google Sheets.</p>
+      </div>
+
+      <form id="rsvpForm" class="rsvp-form">
+        <div class="form-row">
+          <label>Nombre
+            <input type="text" name="nombre" required autocomplete="given-name" />
+          </label>
+          <label>Apellidos
+            <input type="text" name="apellidos" required autocomplete="family-name" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Teléfono
+            <input type="tel" name="telefono" required autocomplete="tel" />
+          </label>
+          <label>Asistiré
+            <select name="asistire" required>
+              <option value="">Seleccionar</option>
+              <option value="Sí asistiré">Sí asistiré</option>
+              <option value="No podré asistir">No podré asistir</option>
+            </select>
+          </label>
+        </div>
+        <label>Alergias o intolerancias
+          <textarea name="alergias" rows="4" placeholder="Indica alergias, intolerancias o menú especial"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Enviar confirmación</button>
+        <p class="status" id="formStatus"></p>
+      </form>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="closeLightbox" aria-label="Cerrar">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">‹</button>
+    <img id="lightboxImage" alt="Foto ampliada" />
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">›</button>
+    <a id="lightboxDownload" class="btn primary lightbox-download" href="#" download>Descargar foto</a>
+  </div>
+
+  <audio id="bgMusic" src="assets/music/musica.mp3" loop preload="none"></audio>
+  <button class="music-btn" id="musicBtn" aria-label="Activar música">♪</button>
+
+  <footer>
+    <p>Ángel & Lorena · Gracias por formar parte de nuestra historia</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
