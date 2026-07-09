@@ -23,12 +23,12 @@ window.BODA_CONFIG = {
   googleSheetWebAppUrl: 'https://script.google.com/macros/s/AKfycby-8cLr6vHtbamZ8HrTloFcpEuvwysie47QPyrHCslN2WqiAJNoFUxP395L8Qc7cpxHGg/exec',
 
   cloudinary: {
-    enabled: false, // Cambia a true cuando lo tengas configurado
-    cloudName: 'gvw5lffp',
+    enabled: true, // Cambia a true cuando lo tengas configurado
+    cloudName: 'dwpogmcw',
     unsignedUploadPreset: 'TU_UPLOAD_PRESET_UNSIGNED',
-    folder: 'boda/invitados',
+    folder: 'boda-evento',
     tag: 'boda-angel-lorena',
-    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
+    listJsonUrl: 'https://res.cloudinary.com/dwpogmcw/image/list/boda-angel-lorena.json'' // Pon tu cloudName real aquí también
   },
 
   // Fotos locales de respaldo
