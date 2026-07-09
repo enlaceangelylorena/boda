@@ -6,20 +6,22 @@
 */
 
 window.BODA_CONFIG = {
-  weddingDate: '2026-09-12T17:00:00+02:00',
+  weddingDate: '2026-09-12T17:30:00+02:00', // Modifica aquí la fecha del contador
   weddingDateText: 'Sábado, 12 de septiembre de 2026',
 
   ceremony: {
-    time: '17:00 h',
-    place: 'Iglesia / lugar de la ceremonia',
-    mapUrl: 'https://maps.google.com/'
+    time: '17:30 h',                  // <--- Cambia aquí la hora de la ceremonia
+    place: 'Tu iglesia o lugar',
+    mapUrl: 'https://maps.google.com/...'
   },
 
   party: {
-    time: '19:30 h',
-    place: 'Finca / salón de celebración',
-    mapUrl: 'https://maps.google.com/'
+    time: '20:00 h',                  // <--- Cambia aquí la hora del banquete/fiesta
+    place: 'Tu finca o salón',
+    mapUrl: 'https://maps.google.com/...'
   },
+  // ... resto de tu configuración
+};
 
   details: {
     dressCode: 'Código de vestimenta: elegante',
