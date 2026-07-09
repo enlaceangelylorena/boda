@@ -33,7 +33,7 @@ window.BODA_CONFIG = {
 
   // Fotos locales de respaldo
   localPhotos: [
-    'assets/fotos/foto-1.jpg',
+    'assets/fotos/foto-1.jpeg',
     'assets/fotos/foto-2.jpg',
     'assets/fotos/foto-3.jpg'
   ],
