@@ -6,17 +6,17 @@
 */
 
 window.BODA_CONFIG = {
-  weddingDate: '2026-09-12T17:30:00+02:00',
+  weddingDate: '2026-09-12T17:00:00+02:00',
   weddingDateText: 'Sábado, 12 de septiembre de 2026',
 
   ceremony: {
-    time: '18:30 h',
+    time: '17:00 h',
     place: 'Iglesia / lugar de la ceremonia',
     mapUrl: 'https://maps.google.com/'
   },
 
   party: {
-    time: '21:00 h',
+    time: '19:30 h',
     place: 'Finca / salón de celebración',
     mapUrl: 'https://maps.google.com/'
   },
