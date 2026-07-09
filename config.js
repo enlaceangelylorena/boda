@@ -1,53 +1,37 @@
-/*
-  CONFIGURACIÓN PRINCIPAL
-  1) GitHub Pages no necesita Vercel.
-  2) Para confirmar asistencia necesitas un Google Apps Script publicado como Web App.
-  3) Para subir fotos a Cloudinary desde una web estática necesitas un Upload Preset UNSIGNED.
-*/
-
+/* CONFIGURACIÓN PRINCIPAL */
 window.BODA_CONFIG = {
-  weddingDate: '2026-09-12T17:30:00+02:00', // Modifica aquí la fecha del contador
+  weddingDate: '2026-09-12T17:00:00+02:00', 
   weddingDateText: 'Sábado, 12 de septiembre de 2026',
 
   ceremony: {
-    time: '17:30 h',                  // <--- Cambia aquí la hora de la ceremonia
-    place: 'Tu iglesia o lugar',
-    mapUrl: 'https://maps.google.com/...'
+    time: '17:00 h',                  
+    place: 'Santuario de la Cinta',
+    mapUrl: 'https://maps.app.goo.gl/RGfBprUt7WtsWrnm7'
   },
 
   party: {
-    time: '20:00 h',                  // <--- Cambia aquí la hora del banquete/fiesta
-    place: 'Tu finca o salón',
-    mapUrl: 'https://maps.google.com/...'
+    time: '19:30 h',                  
+    place: 'Restaurante "El Bosque"',
+    mapUrl: 'https://maps.app.goo.gl/1LjwntpNLyXADbha9'
   },
-  // ... resto de tu configuración
-};
 
   details: {
-    dressCode: 'Código de vestimenta: elegante',
+    dressCode: 'Sobre minimo 4.500 € + IVA "comision... comision...',
     giftInfo: 'Tu presencia será nuestro mejor regalo.'
   },
 
   googleSheetWebAppUrl: 'https://script.google.com/macros/s/AKfycby-8cLr6vHtbamZ8HrTloFcpEuvwysie47QPyrHCslN2WqiAJNoFUxP395L8Qc7cpxHGg/exec',
 
   cloudinary: {
-    enabled: false,
+    enabled: false, // Cambia a true cuando lo tengas configurado
     cloudName: 'gvw5lffp',
     unsignedUploadPreset: 'TU_UPLOAD_PRESET_UNSIGNED',
     folder: 'boda/invitados',
     tag: 'boda-angel-lorena',
-
-    /*
-      Para que la galería pueda leer fotos sin backend:
-      - Opción recomendada: usar el JSON de lista por tag de Cloudinary.
-      - En Cloudinary debes permitir/crear listados por tag o generar una lista pública.
-      - La URL suele ser:
-        https://res.cloudinary.com/TU_CLOUD_NAME/image/list/boda-angel-lorena.json
-    */
-    listJsonUrl: 'https://res.cloudinary.com/TU_CLOUD_NAME/image/list/boda-angel-lorena.json'
+    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
   },
 
-  // Fotos locales de respaldo. Mete archivos en assets/fotos y añádelos aquí.
+  // Fotos locales de respaldo
   localPhotos: [
     'assets/fotos/foto-1.jpg',
     'assets/fotos/foto-2.jpg',
@@ -56,4 +40,4 @@ window.BODA_CONFIG = {
 
   galleryRefreshMs: 15000,
   carouselIntervalMs: 4500
-};
+}; // Único cierre correcto al final de la configuración
