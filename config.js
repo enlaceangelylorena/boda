@@ -6,7 +6,7 @@
 */
 
 window.BODA_CONFIG = {
-  weddingDate: '2026-09-20T18:30:00+02:00',
+  weddingDate: '2026-09-12T17:30:00+02:00',
   weddingDateText: 'Sábado, 20 de septiembre de 2026',
 
   ceremony: {
