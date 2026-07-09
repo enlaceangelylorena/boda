@@ -13,7 +13,7 @@ const lightboxImage = $('#lightboxImage');
 const lightboxDownload = $('#lightboxDownload');
 
 function initContent() {
-  $('#weddingDateText').textContent = 'Sábado, 12 de septiembre de 2026';
+  $('#weddingDateText').textContent = cfg.weddingDateText
   $('#ceremonyTime').textContent = cfg.ceremony?.time || '';
   $('#ceremonyPlace').textContent = cfg.ceremony?.place || '';
   $('#ceremonyMap').href = cfg.ceremony?.mapUrl || '#';
