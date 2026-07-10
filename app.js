@@ -251,20 +251,72 @@ function initRSVP() {
 function initMusic() {
   const btn = $('#musicBtn');
   const audio = $('#bgMusic');
-  btn.addEventListener('click', async () => {
+  
+  // Lista de canciones desde tu BODA_CONFIG
+  const playlist = cfg.playlist && cfg.playlist.length ? cfg.playlist : ['assets/music/musica.mp3'];
+  let currentSongIndex = 0;
+  let hasStarted = false;
+
+  // Ajustamos el volumen al 80% (0.8)
+  audio.volume = 0.8;
+
+  // Función para cargar y reproducir una canción
+  async function playSong(index) {
+    currentSongIndex = index % playlist.length;
+    audio.src = playlist[currentSongIndex];
+    audio.load();
     try {
-      if (audio.paused) {
-        await audio.play();
-        btn.classList.add('playing');
-        btn.textContent = 'Ⅱ';
-      } else {
-        audio.pause();
-        btn.classList.remove('playing');
-        btn.textContent = '♪';
-      }
-    } catch (_) {
+      await audio.play();
+      btn.classList.add('playing');
+      btn.textContent = 'Ⅱ'; 
+    } catch (error) {
+      // Si el navegador bloquea el intento, dejamos que lo vuelva a intentar en la siguiente acción
+      hasStarted = false;
+    }
+  }
+
+  // FUNCIÓN EN BUCLE: Activa la música ante CUALQUIER acción (scroll, clic, toque, mover ratón)
+  async function startMusicOnInteraction() {
+    if (hasStarted) return; 
+    hasStarted = true;
+    
+    await playSong(0);
+    
+    // Una vez que arranca con éxito, quitamos todos los detectores de eventos
+    ['click', 'touchstart', 'scroll', 'mousemove', 'wheel'].forEach(event => {
+      document.removeEventListener(event, startMusicOnInteraction);
+    });
+  }
+
+  // Escuchamos absolutamente cualquier interacción del invitado en la web
+  ['click', 'touchstart', 'scroll', 'mousemove', 'wheel'].forEach(event => {
+    document.addEventListener(event, startMusicOnInteraction, { passive: true });
+  });
+
+  // BOTÓN FLOTANTE: Para mutear y desmutear con un solo toque
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    
+    if (!hasStarted) {
+      hasStarted = true;
+      playSong(0);
+      return;
+    }
+
+    if (audio.muted) {
+      audio.muted = false;
+      btn.classList.add('playing');
+      btn.textContent = 'Ⅱ';
+    } else {
+      audio.muted = true;
+      btn.classList.remove('playing');
       btn.textContent = '♪';
     }
+  });
+
+  // CONTROL DEL BUCLE: Al terminar una canción, salta automáticamente a la siguiente
+  audio.addEventListener('ended', () => {
+    playSong(currentSongIndex + 1);
   });
 }
 
