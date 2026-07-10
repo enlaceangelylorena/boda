@@ -39,4 +39,3 @@ window.BODA_CONFIG = {
     'assets/music/cancion3.mp3'
   ]
 }; // Único cierre correcto al final de la configuración
-};
