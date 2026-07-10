@@ -30,14 +30,6 @@ window.BODA_CONFIG = {
     tag: 'boda-angel-lorena',
     listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
   },
-
-  // Fotos locales de respaldo
-  localPhotos: [
-    'assets/fotos/foto-1.jpeg',
-    'assets/fotos/foto-2.jpg',
-    'assets/fotos/foto-3.jpg'
-  ],
-
   galleryRefreshMs: 15000,
   carouselIntervalMs: 4500
 }; // Único cierre correcto al final de la configuración
