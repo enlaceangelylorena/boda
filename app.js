@@ -197,19 +197,6 @@ function initUpload() {
     }
   });
 }
-
-function initQR() {
-  const canvas = $('#qrCanvas');
-  const uploadUrl = `${location.origin}${location.pathname}#subir-foto`;
-  if (window.QRCode) {
-    QRCode.toCanvas(canvas, uploadUrl, {
-      width: 220,
-      margin: 1,
-      color: { dark: '#3f5948', light: '#fffdf8' }
-    });
-  }
-}
-
 function initRSVP() {
   const form = $('#rsvpForm');
   const status = $('#formStatus');
