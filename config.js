@@ -12,7 +12,7 @@ window.BODA_CONFIG = {
   party: {
     time: '19:30 h',                  
     place: 'Restaurante "El Bosque"',
-    mapUrl: 'https://maps.app.goo.gl/1LjwntpNLyXADbha9'
+    mapUrl: 'https://maps.app.goo.gl/Xbo76VaXJxtyCmhV7'
   },
 
   googleSheetWebAppUrl: 'https://script.google.com/macros/s/AKfycby-8cLr6vHtbamZ8HrTloFcpEuvwysie47QPyrHCslN2WqiAJNoFUxP395L8Qc7cpxHGg/exec',
