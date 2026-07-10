@@ -107,14 +107,24 @@ h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 8px 0 10
 p { line-height: 1.7; color: var(--muted); }
 .section-heading { text-align: center; max-width: 780px; margin: 0 auto 36px; }
 
-.event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.event-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(340px, 460px)); /* Las tarjetas ahora crecen hasta los 460px */
+  gap: 32px; /* Más espacio elegante entre ambas tarjetas */
+  justify-content: center; /* Centra las dos tarjetas en pantallas de ordenador */
+  max-width: 1000px; /* Ancho máximo ideal para dos columnas anchas */
+  margin: 0 auto; /* Centra todo el bloque en la pantalla */
+}
 .event-card, .upload-card, .rsvp-form {
   background: rgba(255,255,255,.72);
   border: 1px solid rgba(198,161,91,.22);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
-.event-card { padding: 32px; text-align: center; }
+.event-card { 
+  padding: 48px 36px;
+  text-align: center; 
+}
 .icon { font-size: 2.3rem; }
 
 .carousel-shell { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
