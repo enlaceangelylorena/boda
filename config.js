@@ -15,20 +15,15 @@ window.BODA_CONFIG = {
     mapUrl: 'https://maps.app.goo.gl/1LjwntpNLyXADbha9'
   },
 
-  details: {
-    dressCode: 'Se irá actualizando con mas información',
-    giftInfo: 'Tu presencia será nuestro mejor regalo.'
-  },
-
   googleSheetWebAppUrl: 'https://script.google.com/macros/s/AKfycby-8cLr6vHtbamZ8HrTloFcpEuvwysie47QPyrHCslN2WqiAJNoFUxP395L8Qc7cpxHGg/exec',
 
   cloudinary: {
-    enabled: true, // Cambia a true cuando lo tengas configurado
+    enabled: true, 
     cloudName: 'gvw5lffp',
     unsignedUploadPreset: 'boda_unsigned',
     folder: 'fotos-evento',
     tag: 'boda-angel-lorena',
-    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
+    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' 
   },
   galleryRefreshMs: 15000,
   carouselIntervalMs: 4500,
