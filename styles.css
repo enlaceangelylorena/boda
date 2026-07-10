@@ -107,13 +107,14 @@ h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin: 8px 0 10
 p { line-height: 1.7; color: var(--muted); }
 .section-heading { text-align: center; max-width: 780px; margin: 0 auto 36px; }
 
+/* SECCIÓN EVENTOS (CORREGIDA) */
 .event-grid { 
   display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(340px, 460px)); /* Las tarjetas ahora crecen hasta los 460px */
-  gap: 32px; /* Más espacio elegante entre ambas tarjetas */
-  justify-content: center; /* Centra las dos tarjetas en pantallas de ordenador */
-  max-width: 1000px; /* Ancho máximo ideal para dos columnas anchas */
-  margin: 0 auto; /* Centra todo el bloque en la pantalla */
+  grid-template-columns: repeat(auto-fit, minmax(340px, 460px));
+  gap: 32px; 
+  justify-content: center; 
+  max-width: 1000px; 
+  margin: 0 auto; 
 }
 .event-card, .upload-card, .rsvp-form {
   background: rgba(255,255,255,.72);
@@ -147,10 +148,16 @@ p { line-height: 1.7; color: var(--muted); }
 .thumbs button.active { border-color: var(--gold); }
 .thumbs img { width: 100%; height: 100%; object-fit: cover; }
 
-.upload-card { display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: center; padding: 38px; }
-.qr-box { display: grid; place-items: center; gap: 10px; padding: 20px; background: var(--cream); border-radius: 24px; }
-.qr-box canvas { width: 220px; height: 220px; background: white; padding: 10px; border-radius: 18px; }
-.upload-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+/* SECCIÓN SUBIR FOTO (OPTIMIZADA SIN QR) */
+.upload-card { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 24px; 
+  align-items: center; 
+  text-align: center;
+  padding: 48px 32px; 
+}
+.upload-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .status { font-weight: 700; color: var(--eucalyptus-dark); }
 
 .rsvp-form { padding: 34px; display: grid; gap: 18px; max-width: 860px; margin: 0 auto; }
