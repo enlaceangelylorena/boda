@@ -13,15 +13,15 @@ const lightboxImage = $('#lightboxImage');
 const lightboxDownload = $('#lightboxDownload');
 
 function initContent() {
-  $('#weddingDateText').textContent = cfg.weddingDateText || '';
-  $('#ceremonyTime').textContent = cfg.ceremony?.time || '';
-  $('#ceremonyPlace').textContent = cfg.ceremony?.place || '';
-  $('#ceremonyMap').href = cfg.ceremony?.mapUrl || '#';
-  $('#partyTime').textContent = cfg.party?.time || '';
-  $('#partyPlace').textContent = cfg.party?.place || '';
-  $('#partyMap').href = cfg.party?.mapUrl || '#';
-  $('#dressCode').textContent = cfg.details?.dressCode || '';
-  $('#giftInfo').textContent = cfg.details?.giftInfo || '';
+  if ($('#weddingDateText')) $('#weddingDateText').textContent = cfg.weddingDateText || '';
+  if ($('#ceremonyTime')) $('#ceremonyTime').textContent = cfg.ceremony?.time || '';
+  if ($('#ceremonyPlace')) $('#ceremonyPlace').textContent = cfg.ceremony?.place || '';
+  if ($('#ceremonyMap')) $('#ceremonyMap').href = cfg.ceremony?.mapUrl || '#';
+  if ($('#partyTime')) $('#partyTime').textContent = cfg.party?.time || '';
+  if ($('#partyPlace')) $('#partyPlace').textContent = cfg.party?.place || '';
+  if ($('#partyMap')) $('#partyMap').href = cfg.party?.mapUrl || '#';
+  
+  // Eliminadas las líneas de dressCode y giftInfo para evitar errores fatales en consola
 }
 
 function initMenu() {
@@ -42,10 +42,11 @@ function initCountdown() {
     const hours = Math.floor((diff % 86400000) / 3600000);
     const minutes = Math.floor((diff % 3600000) / 60000);
     const seconds = Math.floor((diff % 60000) / 1000);
-    $('#days').textContent = String(days).padStart(2, '0');
-    $('#hours').textContent = String(hours).padStart(2, '0');
-    $('#minutes').textContent = String(minutes).padStart(2, '0');
-    $('#seconds').textContent = String(seconds).padStart(2, '0');
+    
+    if ($('#days')) $('#days').textContent = String(days).padStart(2, '0');
+    if ($('#hours')) $('#hours').textContent = String(hours).padStart(2, '0');
+    if ($('#minutes')) $('#minutes').textContent = String(minutes).padStart(2, '0');
+    if ($('#seconds')) $('#seconds').textContent = String(seconds).padStart(2, '0');
   };
   tick();
   setInterval(tick, 1000);
@@ -81,41 +82,46 @@ async function loadPhotos() {
     console.warn(error);
     photos = cfg.localPhotos || [];
   }
-
-  // Evita mostrar rutas locales que aún no existan visualmente como error crítico.
   renderGallery();
 }
 
 function renderGallery() {
+  if (!carouselImage || !carouselEmpty) return;
   const hasPhotos = photos.length > 0;
   carouselImage.style.display = hasPhotos ? 'block' : 'none';
   carouselEmpty.style.display = hasPhotos ? 'none' : 'grid';
   if (!hasPhotos) {
-    thumbs.innerHTML = '';
-    downloadPhoto.removeAttribute('href');
+    if (thumbs) thumbs.innerHTML = '';
+    if (downloadPhoto) downloadPhoto.removeAttribute('href');
     return;
   }
   currentIndex = Math.min(currentIndex, photos.length - 1);
   showPhoto(currentIndex, false);
-  thumbs.innerHTML = photos.map((src, index) => `
-    <button type="button" class="${index === currentIndex ? 'active' : ''}" data-index="${index}" aria-label="Ver foto ${index + 1}">
-      <img src="${src}" alt="Miniatura ${index + 1}" loading="lazy">
-    </button>
-  `).join('');
-  thumbs.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => showPhoto(Number(btn.dataset.index)));
-  });
+  
+  if (thumbs) {
+    thumbs.innerHTML = photos.map((src, index) => `
+      <button type="button" class="${index === currentIndex ? 'active' : ''}" data-index="${index}" aria-label="Ver foto ${index + 1}">
+        <img src="${src}" alt="Miniatura ${index + 1}" loading="lazy">
+      </button>
+    `).join('');
+    thumbs.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => showPhoto(Number(btn.dataset.index)));
+    });
+  }
 }
 
 function showPhoto(index, restart = true) {
   if (!photos.length) return;
   currentIndex = (index + photos.length) % photos.length;
   const src = photos[currentIndex];
-  carouselImage.src = src;
-  downloadPhoto.href = src;
-  lightboxImage.src = src;
-  lightboxDownload.href = src;
-  thumbs.querySelectorAll('button').forEach((btn, i) => btn.classList.toggle('active', i === currentIndex));
+  if (carouselImage) carouselImage.src = src;
+  if (downloadPhoto) downloadPhoto.href = src;
+  if (lightboxImage) lightboxImage.src = src;
+  if (lightboxDownload) lightboxDownload.href = src;
+  
+  if (thumbs) {
+    thumbs.querySelectorAll('button').forEach((btn, i) => btn.classList.toggle('active', i === currentIndex));
+  }
   if (restart) startCarousel();
 }
 
@@ -130,16 +136,16 @@ function startCarousel() {
 }
 
 function initGalleryControls() {
-  $('#nextPhoto').addEventListener('click', nextPhoto);
-  $('#prevPhoto').addEventListener('click', prevPhoto);
-  $('#expandPhoto').addEventListener('click', openLightbox);
-  carouselImage.addEventListener('click', openLightbox);
-  $('#closeLightbox').addEventListener('click', closeLightbox);
-  $('#lightboxNext').addEventListener('click', nextPhoto);
-  $('#lightboxPrev').addEventListener('click', prevPhoto);
-  $('#refreshGallery').addEventListener('click', loadPhotos);
+  $('#nextPhoto')?.addEventListener('click', nextPhoto);
+  $('#prevPhoto')?.addEventListener('click', prevPhoto);
+  $('#expandPhoto')?.addEventListener('click', openLightbox);
+  carouselImage?.addEventListener('click', openLightbox);
+  $('#closeLightbox')?.addEventListener('click', closeLightbox);
+  $('#lightboxNext')?.addEventListener('click', nextPhoto);
+  $('#lightboxPrev')?.addEventListener('click', prevPhoto);
+  $('#refreshGallery')?.addEventListener('click', loadPhotos);
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('open')) return;
+    if (!lightbox || !lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') nextPhoto();
     if (e.key === 'ArrowLeft') prevPhoto();
@@ -147,12 +153,13 @@ function initGalleryControls() {
 }
 
 function openLightbox() {
-  if (!photos.length) return;
+  if (!photos.length || !lightbox) return;
   lightbox.classList.add('open');
   lightbox.setAttribute('aria-hidden', 'false');
 }
 
 function closeLightbox() {
+  if (!lightbox) return;
   lightbox.classList.remove('open');
   lightbox.setAttribute('aria-hidden', 'true');
 }
@@ -179,6 +186,8 @@ async function uploadToCloudinary(file) {
 function initUpload() {
   const input = $('#photoInput');
   const status = $('#uploadStatus');
+  if (!input || !status) return;
+  
   input.addEventListener('change', async () => {
     const file = input.files?.[0];
     if (!file) return;
@@ -197,9 +206,12 @@ function initUpload() {
     }
   });
 }
+
 function initRSVP() {
   const form = $('#rsvpForm');
   const status = $('#formStatus');
+  if (!form || !status) return;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const webAppUrl = cfg.googleSheetWebAppUrl;
@@ -220,13 +232,12 @@ function initRSVP() {
 
     status.textContent = 'Enviando confirmación...';
     try {
-      const res = await fetch(webAppUrl, {
+      await fetch(webAppUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
-      // no-cors no permite leer respuesta, pero evita bloqueos CORS en Apps Script.
       form.reset();
       status.textContent = 'Confirmación enviada correctamente. ¡Gracias!';
     } catch (error) {
@@ -238,16 +249,14 @@ function initRSVP() {
 function initMusic() {
   const btn = $('#musicBtn');
   const audio = $('#bgMusic');
+  if (!btn || !audio) return;
   
-  // Lista de canciones desde tu BODA_CONFIG
   const playlist = cfg.playlist && cfg.playlist.length ? cfg.playlist : ['assets/music/musica.mp3'];
   let currentSongIndex = 0;
   let hasStarted = false;
 
-  // Ajustamos el volumen al 80% (0.8)
   audio.volume = 0.8;
 
-  // Función para cargar y reproducir una canción
   async function playSong(index) {
     currentSongIndex = index % playlist.length;
     audio.src = playlist[currentSongIndex];
@@ -257,30 +266,24 @@ function initMusic() {
       btn.classList.add('playing');
       btn.textContent = 'Ⅱ'; 
     } catch (error) {
-      // Si el navegador bloquea el intento, dejamos que lo vuelva a intentar en la siguiente acción
       hasStarted = false;
     }
   }
 
-  // FUNCIÓN EN BUCLE: Activa la música ante CUALQUIER acción (scroll, clic, toque, mover ratón)
   async function startMusicOnInteraction() {
     if (hasStarted) return; 
     hasStarted = true;
-    
     await playSong(0);
     
-    // Una vez que arranca con éxito, quitamos todos los detectores de eventos
     ['click', 'touchstart', 'scroll', 'mousemove', 'wheel'].forEach(event => {
       document.removeEventListener(event, startMusicOnInteraction);
     });
   }
 
-  // Escuchamos absolutamente cualquier interacción del invitado en la web
   ['click', 'touchstart', 'scroll', 'mousemove', 'wheel'].forEach(event => {
     document.addEventListener(event, startMusicOnInteraction, { passive: true });
   });
 
-  // BOTÓN FLOTANTE: Para mutear y desmutear con un solo toque
   btn.addEventListener('click', (e) => {
     e.stopPropagation(); 
     
@@ -301,12 +304,12 @@ function initMusic() {
     }
   });
 
-  // CONTROL DEL BUCLE: Al terminar una canción, salta automáticamente a la siguiente
   audio.addEventListener('ended', () => {
     playSong(currentSongIndex + 1);
   });
 }
 
+// Inicialización de la aplicación de boda
 initContent();
 initMenu();
 initCountdown();
