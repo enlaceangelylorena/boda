@@ -7,6 +7,13 @@ window.BODA_CONFIG = {
     time: '17:00 h',                  
     place: 'Santuario de la Cinta',
     mapUrl: 'https://maps.app.goo.gl/RGfBprUt7WtsWrnm7'
+
+    playlist: [
+    'assets/music/cancion1.mp3',
+    'assets/music/cancion2.mp3',
+    'assets/music/cancion3.mp3'
+  ]
+};
   },
 
   party: {
