@@ -31,7 +31,7 @@ window.BODA_CONFIG = {
     listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
   },
   galleryRefreshMs: 15000,
-  carouselIntervalMs: 4500
+  carouselIntervalMs: 4500,
 
   playlist: [
     'assets/music/cancion1.mp3',
