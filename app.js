@@ -312,7 +312,6 @@ initMenu();
 initCountdown();
 initGalleryControls();
 initUpload();
-initQR();
 initRSVP();
 initMusic();
 loadPhotos();
