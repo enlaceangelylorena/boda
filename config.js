@@ -32,4 +32,10 @@ window.BODA_CONFIG = {
   },
   galleryRefreshMs: 15000,
   carouselIntervalMs: 4500
+
+  playlist: [
+    'assets/music/cancion1.mp3',
+    'assets/music/cancion2.mp3',
+    'assets/music/cancion3.mp3'
+  ]
 }; // Único cierre correcto al final de la configuración
