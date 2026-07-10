@@ -25,10 +25,10 @@ window.BODA_CONFIG = {
   cloudinary: {
     enabled: true, // Cambia a true cuando lo tengas configurado
     cloudName: 'gvw5lffp',
-    unsignedUploadPreset: 'TU_UPLOAD_PRESET_UNSIGNED',
+    unsignedUploadPreset: 'boda_unsigned',
     folder: 'fotos-evento',
     tag: 'boda-angel-lorena',
-    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json'' // Pon tu cloudName real aquí también
+    listJsonUrl: 'https://res.cloudinary.com/gvw5lffp/image/list/boda-angel-lorena.json' // Pon tu cloudName real aquí también
   },
 
   // Fotos locales de respaldo
